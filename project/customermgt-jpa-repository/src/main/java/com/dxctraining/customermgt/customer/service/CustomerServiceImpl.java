@@ -38,10 +38,10 @@ public class CustomerServiceImpl implements ICustomerService{
 	}
 	
 	private void validate(Customer customer) {
-		if(customer==null) {}
+		if(customer==null) {
 			throw new InvalidArgumentException("customer should not be null");
 	}
-
+	}
 	@Override
 	public List<Customer> findCustomerByName(String name) {
 		List<Customer> list=dao.findCustomerByName(name);
