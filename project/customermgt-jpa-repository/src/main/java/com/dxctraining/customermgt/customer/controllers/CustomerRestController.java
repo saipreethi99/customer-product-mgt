@@ -38,6 +38,14 @@ public class CustomerRestController {
 		return response;
 	}
 
+	@GetMapping("/get/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	public CustomerDto findCustomerById(@PathVariable("id") int id) {
+		Customer customer = customerservice.findCustomerById(id);
+		CustomerDto response = customerUtil.customerDto(customer);
+		return response;
+	}
+
 	@GetMapping
 	@ResponseStatus(HttpStatus.OK)
 	public List<CustomerDto> fetchAllCustomers() {
@@ -50,7 +58,7 @@ public class CustomerRestController {
 		return response;
 	}
 
-	@GetMapping("/get/{name}")
+	@GetMapping("/get/customer/{name}")
 	@ResponseStatus(HttpStatus.OK)
 	public List<CustomerDto> FindCustomerByName(@PathVariable("name") String name) {
 		List<Customer> list = customerservice.findCustomerByName(name);
